@@ -3,7 +3,7 @@ var Tree = function(value) {
   newTree.value = value;
 
   // your code here
-  newTree.children = [];  // fix me //should be an arr
+  newTree.children = [];
 
   _.extend(newTree, treeMethods);
 
@@ -28,23 +28,25 @@ treeMethods.contains = function(target, child) {
   var result = false;
 
   //Main Case
-  if (child.value === target){
+  if (child.value === target) {
     result = true;
     return result;
   }
 
-  for (var i = 0; i<child.children.length; i++) {
+  for (var i = 0; i < child.children.length; i++) {
     //if the interpreter runs to a function, it will evaluate the boolean
     //if true, return the result
-    if(this.contains(target, child.children[i])) {
+    if (this.contains(target, child.children[i])) {
       return this.contains(target, child.children[i]);
-    };
+    }
   }
 
   //return the result of recursion
   return result;
-}
+};
 
 /*
  * Complexity: What is the time complexity of the above functions?
+
+ treeMethods.contains and addchild both use linear time.
  */
